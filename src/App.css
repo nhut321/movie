@@ -1,5 +1,13 @@
+:root {
+  --primary-color: red;
+}
+
 .App {
   text-align: center;
+}
+
+a {
+  text-decoration: none!important;
 }
 
 .App-logo {
