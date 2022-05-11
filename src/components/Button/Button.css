@@ -1,4 +1,4 @@
-.btn-custom {
+.btn-custom.large {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -7,6 +7,18 @@
     color: white;
     border: none;
     text-transform: uppercase;
+}
+
+.btn-custom.small {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    text-transform: uppercase;
+    transform: scale(1,0.8);
 }
 
 .btn-custom__icon {

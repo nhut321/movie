@@ -1,9 +1,11 @@
 :root {
   --primary-color: red;
+  --background-color: #141414;
 }
 
 .App {
   text-align: center;
+  background-color: var(--background-color);
 }
 
 a {

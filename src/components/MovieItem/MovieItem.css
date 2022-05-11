@@ -1,0 +1,45 @@
+.movie-item {
+	position: relative;
+	width: 360px;
+	height: 210px;
+	padding: 2rem;
+	color: white;
+	background-size: cover;
+	transition: 0.3s;
+}
+
+.movie-item:before {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	bottom: 0;
+	background: linear-gradient(90deg, rgba(0, 0, 0, 85%), rgba(102, 51, 153, 0));
+	z-index: 1;
+}
+
+.movie-item:hover:before {
+	background: linear-gradient(90deg, rgb(0 0 0), rgb(102 51 153 / 25%));
+	transition: 0.3s;
+}
+
+.movie-item:hover {
+	transform: scale3d(1.1, 1.1, 1) translate3d(0, 0, 0) perspective(31.25em);
+	border-left: 4px solid var(--primary-color);
+	z-index: 2;
+}
+
+.movie-item__wrap {
+	position: absolute;
+	display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    z-index: 2;
+}
+
+.swiper-slide {
+	position: relative;
+	z-index: 2;
+}

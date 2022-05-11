@@ -1,0 +1,20 @@
+.movie-slider__list {
+	/*display: flex;
+	justify-content: space-between;
+	align-items: center;*/
+}
+
+.movie-slider__list-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1rem 0;
+}
+
+.movie-slider__list-header h4 {
+	color: white;
+}
+
+.mySwiper.movie-swiper {
+	padding: 3rem 0;
+}

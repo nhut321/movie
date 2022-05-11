@@ -15,7 +15,7 @@ export default function Slider() {
 
 		        <SwiperSlide className='slider-item' style={{backgroundImage: `url(${sliderItem})`}}>
 		        	<div className="slider-item__inner container">
-			        	<Row className='h-100'>
+			        	<Row className='h-100' style={{overflow: 'hidden'}}>
 			        		<Col xs={7} className='d-flex align-items-start flex-column justify-content-center'>
 			        			<div className="slider-item__inner-heading">
 			        				<h1 
@@ -44,7 +44,7 @@ export default function Slider() {
 			        				</div>
 			        			</div>
 			        			<div className="slider-item__inner-button">
-			        				<Button />
+			        				<Button size='large' />
 			        			</div>
 			        		</Col>
 			        		<Col xs={5}>1</Col>
@@ -54,7 +54,7 @@ export default function Slider() {
 
 		        <SwiperSlide className='slider-item' style={{backgroundImage: `url(${sliderItem})`}}>
 		        	<div className="slider-item__inner container">
-			        	<Row className='h-100'>
+			        	<Row className='h-100' style={{overflow: 'hidden'}}>
 			        		<Col xs={7} className='d-flex align-items-start flex-column justify-content-center'>
 			        			<div className="slider-item__inner-heading">
 			        				<h1 
@@ -83,7 +83,7 @@ export default function Slider() {
 			        				</div>
 			        			</div>
 			        			<div className="slider-item__inner-button">
-			        				<Button />
+			        				<Button size='large' />
 			        			</div>
 			        		</Col>
 			        		<Col xs={5}>1</Col>
@@ -93,7 +93,7 @@ export default function Slider() {
 
 		        <SwiperSlide className='slider-item' style={{backgroundImage: `url(${sliderItem})`}}>
 		        	<div className="slider-item__inner container">
-			        	<Row className='h-100'>
+			        	<Row className='h-100' style={{overflow: 'hidden'}}>
 			        		<Col xs={7} className='d-flex align-items-start flex-column justify-content-center'>
 			        			<div className="slider-item__inner-heading">
 			        				<h1 
@@ -122,7 +122,7 @@ export default function Slider() {
 			        				</div>
 			        			</div>
 			        			<div className="slider-item__inner-button">
-			        				<Button />
+			        				<Button size='large' />
 			        			</div>
 			        		</Col>
 			        		<Col xs={5}>1</Col>
