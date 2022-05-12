@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import MovieItem from '../MovieItem'
+import { BASE_URL, API_KEY, imageUrl } from '../baseApi'
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -9,6 +11,15 @@ import './MovieListSlider.css'
 import { Pagination, Navigation } from "swiper";
 
 export default function MovieListSlider({heading}) {
+	const [movieItem, setMovieItem] = useState([])
+	useEffect(() => {
+		const fetchData = async () => {
+			await fetch(BASE_URL+'/movie/popular?api_key=' + API_KEY)
+				.then(res => res.json())
+				.then(data => setMovieItem(data.results))
+		}
+		fetchData()
+	},[])
 	return (
 		<div className='movie-slider__list container pt-4 pb-4'>
 			<div className="movie-slider__list-header">
@@ -28,15 +39,13 @@ export default function MovieListSlider({heading}) {
 		        modules={[Pagination, Navigation]}
 		        className="mySwiper movie-swiper"
         	>
-				<SwiperSlide>
-					<MovieItem />
-				</SwiperSlide>
-				<SwiperSlide>
-					<MovieItem />
-				</SwiperSlide>
-				<SwiperSlide>
-					<MovieItem />
-				</SwiperSlide>
+        		{
+        			movieItem.map((v,i) => {
+        				return <SwiperSlide key={v.id}>
+									<MovieItem title={v.original_title} imageBg={imageUrl + v.backdrop_path}/>
+								</SwiperSlide>
+        			})
+        		}
 			</Swiper>
 			{/* <div className='d-flex justify-content-between align-items-center'> */}
 			{/* 	<MovieItem /> */}
