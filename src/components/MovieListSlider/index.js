@@ -8,15 +8,21 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import './MovieListSlider.css'
 
-import { Pagination, Navigation } from "swiper";
+import { Navigation } from "swiper";
 
-export default function MovieListSlider({heading}) {
+export default function MovieListSlider({heading,urlKey}) {
 	const [movieItem, setMovieItem] = useState([])
+	console.log(urlKey)
 	useEffect(() => {
 		const fetchData = async () => {
-			await fetch(BASE_URL+'/movie/popular?api_key=' + API_KEY)
+			await fetch(BASE_URL+'/movie/' + urlKey + '?api_key=' + API_KEY + '&language=en-US')
 				.then(res => res.json())
-				.then(data => setMovieItem(data.results))
+				.then(data => {
+					// setMovieItem(data.results)
+
+
+					setMovieItem(data.results)
+				})
 		}
 		fetchData()
 	},[])
@@ -31,19 +37,21 @@ export default function MovieListSlider({heading}) {
 		        spaceBetween={30}
 		        slidesPerGroup={3}
 		        loop={true}
-		        loopFillGroupWithBlank={true}
+		        loopFillGroupWithBlank={false}
 		        pagination={{
 		          clickable: true,
 		        }}
 		        navigation={true}
-		        modules={[Pagination, Navigation]}
+		        modules={[ Navigation]}
 		        className="mySwiper movie-swiper"
         	>
         		{
         			movieItem.map((v,i) => {
-        				return <SwiperSlide key={v.id}>
+        				return(
+	        					<SwiperSlide key={i}>
 									<MovieItem title={v.original_title} imageBg={imageUrl + v.backdrop_path}/>
 								</SwiperSlide>
+        				)
         			})
         		}
 			</Swiper>

@@ -8,7 +8,7 @@ import SliderItem from './SliderItem'
 import './Slider.css'
 import { BASE_URL, API_KEY, imageUrl } from '../baseApi'
 
-export default function Slider() {
+export default function Hero() {
 	const [topMovie, setTopMovie] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
@@ -29,7 +29,7 @@ export default function Slider() {
 				{
 					topMovie.map((v,i) => {
 						return (
-					        <SwiperSlide className='slider-item' style={{backgroundImage: `url(${imageUrl + v.backdrop_path})`}}>
+					        <SwiperSlide key={i} className='slider-item' style={{backgroundImage: `url(${imageUrl + v.backdrop_path})`}}>
 					        	<SliderItem movieId={v.id}/>
 					        </SwiperSlide>
 						)

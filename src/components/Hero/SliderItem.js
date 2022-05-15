@@ -14,7 +14,6 @@ export default function SliderItem({movieId}) {
 		}
 		fetchData()
 	},[])
-	console.log(movie)
 	return (
 		<div className="slider-item__inner container">
         	<Row className='h-100' style={{overflow: 'hidden'}}>
@@ -34,7 +33,7 @@ export default function SliderItem({movieId}) {
         					<span className='me-2' style={{color: 'var(--primary-color)',fontWeight: 'bold'}}>Genres:</span>
         					{
         						movie.genres?.map((v,i) => {
-        							return <a className='me-2' href="#">{v.name+' ,'}</a>
+        							return <a key={i} className='me-2' href="#">{v.name+' ,'}</a>
         						})
         					}
         					
