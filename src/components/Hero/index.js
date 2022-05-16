@@ -7,14 +7,14 @@ import sliderItem from '../../assets/slider1.jpg'
 import SliderItem from './SliderItem'
 import './Slider.css'
 import { BASE_URL, API_KEY, imageUrl } from '../baseApi'
+import { getDataApi } from '../apiConfig'
 
 export default function Hero() {
 	const [topMovie, setTopMovie] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
-			await fetch(BASE_URL + '/movie/now_playing?api_key=' + API_KEY)
-				.then(res => res.json())
-				.then(data => setTopMovie(data.results.slice(0,3)))
+			const result = await getDataApi.getDataHero()
+			setTopMovie(result.data.results.slice(0,5))
 		}
 		fetchData()
 	},[])

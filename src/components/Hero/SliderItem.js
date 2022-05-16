@@ -1,16 +1,20 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import { Row, Col } from 'react-bootstrap'
 import textureBg from '../../assets/texure.jpg'
 import Button from '../Button'
 import { BASE_URL, API_KEY, imageUrl } from '../baseApi'
+import axios from 'axios'
 
 export default function SliderItem({movieId}) {
 	const [movie, setMovie] = useState({})
+	const [cast, setCast] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
-			await fetch(BASE_URL + `/movie/${movieId}?api_key=${API_KEY}`)
-				.then(res => res.json())
-				.then(data => setMovie(data))
+			const cast = await axios.get(`${BASE_URL}/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`)
+			setCast(cast.data.cast.slice(0,5))
+			const genres = await axios.get(`${BASE_URL}/movie/${movieId}?api_key=${API_KEY}`)
+			setMovie(genres.data)
 		}
 		fetchData()
 	},[])
@@ -30,10 +34,18 @@ export default function SliderItem({movieId}) {
         			</div>
         			<div className="slider-item__inner-trending mt-4 mb-4 text-start">
         				<div className="slider-item__inner-trending-item">
+        					<span className='me-2' style={{color: 'var(--primary-color)',fontWeight: 'bold'}}>Cast:</span>
+        					{
+        						cast?.map((v,i) => {
+        							return <a key={i} className='me-2' href="#">{v.name}</a>
+        						})
+        					}
+        				</div>
+        				<div className="slider-item__inner-trending-item">
         					<span className='me-2' style={{color: 'var(--primary-color)',fontWeight: 'bold'}}>Genres:</span>
         					{
         						movie.genres?.map((v,i) => {
-        							return <a key={i} className='me-2' href="#">{v.name+' ,'}</a>
+        							return <a key={i} className='me-2' href="#">{v.name}</a>
         						})
         					}
         					
@@ -45,7 +57,9 @@ export default function SliderItem({movieId}) {
         				</div>
         			</div>
         			<div className="slider-item__inner-button">
-        				<Button size='large' />
+        				<Link to='/detail/123'>
+        					<Button size='large' />
+        				</Link>
         			</div>
         		</Col>
         		<Col xs={5}>1</Col>

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import avatar from '../../assets/avatar.png'
 import './Header.css'
@@ -7,74 +8,74 @@ const Header = () => {
 		<header className='header'>
 			<div className="header-left">
 				<div className="header-left__logo">
-					<a href="">
+					<Link to="/">
 						<img src={logo} alt=""/>
-					</a>
+					</Link>
 				</div>
 			</div>
 			<div className="header-center">
 				<div className="header-center__list">
 					<div className="header-center__item">
-						<a className='header-center__item-link' href="">							
+						<Link className='header-center__item-link' to="/">							
 							home
-						</a>
+						</Link>
 					</div>
 					<div className="header-center__item">
-						<a className='header-center__item-link' href="">							
+						<Link className='header-center__item-link' to="/movie">							
 							movies
-						</a>
+						</Link>
 					</div>
 					<div className="header-center__item">
-						<a className='header-center__item-link' href="">							
+						<Link className='header-center__item-link' to="">							
 							tv shows
-						</a>
+						</Link>
 					</div>
 					<div className="header-center__item">
-						<a className='header-center__item-link' href="">							
+						<Link className='header-center__item-link' to="">							
 							videos
-						</a>
+						</Link>
 					</div>
 					<div className="header-center__item">
-						<a className='header-center__item-link' href="">							
+						<Link className='header-center__item-link' to="">							
 							blog
-						</a>
+						</Link>
 						<div className="header-center__item-sub">
 							<div className="header-center__item-sub-item">
-								<a href="">
+								<Link to="">
 									Blog
-								</a>
+								</Link>
 							</div>
 							<div className="header-center__item-sub-item">
-								<a href="">
+								<Link to="">
 									blog details
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
 					<div className="header-center__item">
-						<a className='header-center__item-link' href="">							
+						<Link className='header-center__item-link' to="">							
 							pages
-						</a>
+						</Link>
 						<div className="header-center__item-sub">
 							<div className="header-center__item-sub-item">
-								<a href="">
+								<Link to="">
 									about
-								</a>
+								</Link>
 							</div>
 							<div className="header-center__item-sub-item">
-								<a href="">
+								<Link to="">
 									contact
-								</a>
+								</Link>
 							</div>
 							<div className="header-center__item-sub-item">
-								<a href="">
+								<Link to="">
 									paq
-								</a>
+								</Link>
 							</div>
 							<div className="header-center__item-sub-item">
-								<a href="">
+								<Link to="">
 									tag
-								</a>
+								</Link>
 							</div>
 						</div>
 					</div>
@@ -84,18 +85,18 @@ const Header = () => {
 				<div className="header-right__list">
 					<div className="header-right__item search">
 						<div className="header-right__item-icon">
-							<i class="fa-solid fa-magnifying-glass"></i>
+							<i className="fa-solid fa-magnifying-glass"></i>
 						</div>
 						<form className='search-form d-flex'>
 							<div className="search-form__icon">
-								<i class="fa-solid fa-magnifying-glass"></i>
+								<i className="fa-solid fa-magnifying-glass"></i>
 							</div>
 							<input type="text"/>
 						</form>
 					</div>
 					<div className="header-right__item noti">
 						<div className="header-right__item-icon">
-							<i class="fa-solid fa-bell"></i>
+							<i className="fa-solid fa-bell"></i>
 						</div>
 					</div>
 					<div className="header-right__item">

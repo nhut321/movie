@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import MovieItem from '../MovieItem'
 import { BASE_URL, API_KEY, imageUrl } from '../baseApi'
+import { getDataApi } from '../apiConfig'
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -12,17 +13,10 @@ import { Navigation } from "swiper";
 
 export default function MovieListSlider({heading,urlKey}) {
 	const [movieItem, setMovieItem] = useState([])
-	console.log(urlKey)
 	useEffect(() => {
 		const fetchData = async () => {
-			await fetch(BASE_URL+'/movie/' + urlKey + '?api_key=' + API_KEY + '&language=en-US')
-				.then(res => res.json())
-				.then(data => {
-					// setMovieItem(data.results)
-
-
-					setMovieItem(data.results)
-				})
+			const result = await getDataApi.getDataSlider(urlKey)
+			setMovieItem(result.data.results)
 		}
 		fetchData()
 	},[])

@@ -15,13 +15,13 @@ export default function MovieItem({title, imageBg}) {
 				<Button size='small'/>
 				<div className="movie-item__wrap-actions">
 					<div className="movie-item__wrap-actions-icon">
-						<i class="fa-solid fa-share-nodes"></i>
+						<i className="fa-solid fa-share-nodes"></i>
 					</div>
 					<div className="movie-item__wrap-actions-icon">
-						<i class="fa-solid fa-heart"></i>
+						<i className="fa-solid fa-heart"></i>
 					</div>
 					<div className="movie-item__wrap-actions-icon">
-						<i class="fa-solid fa-plus"></i>
+						<i className="fa-solid fa-plus"></i>
 					</div>
 				</div>
 			</div>

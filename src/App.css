@@ -8,6 +8,11 @@
   background-color: var(--background-color);
 }
 
+::selection {
+  background: var(--primary-color); 
+  color: white;
+}
+
 a {
   text-decoration: none!important;
 }
