@@ -14,6 +14,48 @@
 	background-color: #00000066;
 }
 
+.detail-hero__img {
+	border-radius: 10px;
+    overflow: hidden;
+}
+
 .detail-hero__img img {
 	width: 100%;
+}
+
+.detail-right {
+	color: white;
+	text-align: left;
+}
+
+.detail-actions {
+	display: flex;
+	align-items: center;
+}
+
+.detail-actions__rating {
+	display: flex;
+	align-items: center;
+	margin-right: 1rem;
+}
+
+.detail-actions__rating-left i {
+	font-size: 1.5rem;
+    margin-right: 0.5rem;
+    color: #f5c518;
+}
+
+.detail-actions__tooltip {
+	display: flex;
+}
+
+.actions__tooltip-item {
+	width: 46px;
+    height: 46px;
+    background-color: black;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 1rem;
 }
