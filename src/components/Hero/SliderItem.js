@@ -6,7 +6,7 @@ import Button from '../Button'
 import { BASE_URL, API_KEY, imageUrl } from '../baseApi'
 import axios from 'axios'
 
-export default function SliderItem({movieId}) {
+export default function SliderItem({movieId, _id}) {
 	const [movie, setMovie] = useState({})
 	const [cast, setCast] = useState([])
 	useEffect(() => {
@@ -57,7 +57,7 @@ export default function SliderItem({movieId}) {
         				</div>
         			</div>
         			<div className="slider-item__inner-button">
-        				<Link to='/detail/123'>
+        				<Link to={`/detail/${_id}`}>
         					<Button size='large' />
         				</Link>
         			</div>
