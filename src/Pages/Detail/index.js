@@ -1,6 +1,10 @@
+import DetailHero from '../../components/DetailHero'
+
 function Detail() {
 	return(
-		<h1>Detail</h1>
+		<div className='wrapper' style={{paddingTop: '70px'}}>
+			<DetailHero />
+		</div>
 	)
 }
 

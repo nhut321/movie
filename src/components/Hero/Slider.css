@@ -56,7 +56,6 @@
 .slider-item__inner-heading h1 {
 	text-transform: uppercase;
     -webkit-background-clip: text!important;
-	font-size: 5rem;
 	font-weight: bold;
     color: transparent;
     text-align: left;

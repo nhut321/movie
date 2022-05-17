@@ -11,11 +11,11 @@ import './MovieListSlider.css'
 
 import { Navigation } from "swiper";
 
-export default function MovieListSlider({heading,urlKey}) {
+export default function MovieListSlider({heading,urlKey,type}) {
 	const [movieItem, setMovieItem] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
-			const result = await getDataApi.getDataSlider(urlKey)
+			const result = await getDataApi.getDataSlider(urlKey,type)
 			setMovieItem(result.data.results)
 		}
 		fetchData()

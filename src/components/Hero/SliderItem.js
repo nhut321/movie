@@ -24,7 +24,12 @@ export default function SliderItem({movieId}) {
         		<Col xs={7} className='d-flex align-items-start flex-column justify-content-center'>
         			<div className="slider-item__inner-heading">
         				<h1 
-        					style={{background: `url(${textureBg})`}}
+        					style={
+        						{
+        							background: `url(${textureBg})`,				
+									fontSize: movie?.original_title?.length > 20 ? '3rem' : '5rem'
+        						}
+        					}
         				>
         					{movie.original_title}
         				</h1>
@@ -49,11 +54,6 @@ export default function SliderItem({movieId}) {
         						})
         					}
         					
-        				</div>
-        				<div className="slider-item__inner-trending-item">
-        					<span className='me-2' style={{color: 'var(--primary-color)', fontWeight: 'bold'}}>Tag:</span>
-        					<a className='me-2' href="#">Action</a>
-        					<a href="#">Horror</a>
         				</div>
         			</div>
         			<div className="slider-item__inner-button">

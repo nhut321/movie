@@ -5,8 +5,8 @@ const Home = () => {
 	return (
 		<div className="home">
 			<Hero />
-			<MovieListSlider heading='Top Rated' urlKey='top_rated' />
-			<MovieListSlider heading='Upcoming Movies' urlKey='upcoming' />
+			<MovieListSlider heading='Top Rated' urlKey='top_rated' type='movie' />
+			<MovieListSlider heading='Popular TV Shows' urlKey='popular' type='tv' />
 		</div>
 	)
 }

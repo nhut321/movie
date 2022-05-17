@@ -1,0 +1,19 @@
+.detail-hero {
+	position: relative;
+	height: 500px;
+	background-size: cover;
+}
+
+.detail-hero__mask {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #00000066;
+}
+
+.detail-hero__img img {
+	width: 100%;
+}
