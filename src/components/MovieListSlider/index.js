@@ -15,8 +15,12 @@ export default function MovieListSlider({heading,urlKey,type}) {
 	const [movieItem, setMovieItem] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
-			const result = await getDataApi.getDataSlider(urlKey,type)
-			setMovieItem(result.data.results)
+			try {
+				const result = await getDataApi.getDataSlider(urlKey,type)
+				setMovieItem(result.data.results)
+			} catch(err) {
+				console.log(err)
+			}
 		}
 		fetchData()
 	},[])
@@ -43,17 +47,12 @@ export default function MovieListSlider({heading,urlKey,type}) {
         			movieItem.map((v,i) => {
         				return(
 	        					<SwiperSlide key={i}>
-									<MovieItem title={v.original_title} imageBg={imageUrl + v.backdrop_path}/>
+									<MovieItem type={type} item={v} _id={v.id} imageUrl={imageUrl}/>
 								</SwiperSlide>
         				)
         			})
         		}
 			</Swiper>
-			{/* <div className='d-flex justify-content-between align-items-center'> */}
-			{/* 	<MovieItem /> */}
-			{/* 	<MovieItem /> */}
-			{/* 	<MovieItem /> */}
-			{/* </div> */}
 		</div>
 	)
 }

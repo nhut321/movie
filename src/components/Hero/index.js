@@ -28,10 +28,9 @@ export default function Hero() {
 			<Swiper navigation={true} modules={[Navigation]} className="mySwiper">
 				{
 					topMovie.map((v,i) => {
-						console.log(v)
 						return (
 					        <SwiperSlide key={i} className='slider-item' style={{backgroundImage: `url(${imageUrl + v.backdrop_path})`}}>
-					        	<SliderItem movieId={v.id} _id={v.id}/>
+					        	<SliderItem movieId={v.id} _id={v.id} type='movie' />
 					        </SwiperSlide>
 						)
 					})

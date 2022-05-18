@@ -1,26 +1,25 @@
-// import { CircularProgressbar } from 'react-circular-progressbar';
 import { Row, Col } from 'react-bootstrap'
 import detaiMovieImg from '../../assets/detail-movie.jpg'
-import movieItem from '../../assets/movie-item.jpg'
+import noImage from '../../assets/noimage.jpg'
+import { imageUrl } from '../baseApi'
 import './DetailHero.css'
-// import 'react-circular-progressbar/dist/styles.css'
 
-export default function DetailHero() {
+export default function DetailHero({_id, item}) {
 	return (
-		<div className="detail-hero" style={{backgroundImage: `url(${movieItem})`}}>
+		<div className="detail-hero" style={{backgroundImage: `url(${item.backdrop_patth == null || undefined ? noImage : imageUrl + item?.backdrop_path})`}}>
 			<div className="container h-100">
 				<div className="detail-hero__mask"></div>
 				<Row className='h-100' style={{position: 'relative', zIndex: 2}}>
 					<Col xs='3' className='wrapper'>
 						<div className="detail-hero__img">
-							<img src={detaiMovieImg} alt="" />
+							<img src={imageUrl + item.poster_path} alt="poster" />
 						</div>
 					</Col>
 					<Col xs='9' className='wrapper'>
 						<div className="detail-right">
 							<div className="detail-hero__title">
-								<h2>Logan</h2>
-								<span className='ms-2'>( 2017 )</span>
+								<h2>{item.original_title}</h2>
+								<span className='ms-2'>( {item.release_date?.split('-')[0]} )</span>
 							</div>
 							<div className="detail-genres">
 								<span className='me-2'>Action</span>
@@ -29,7 +28,7 @@ export default function DetailHero() {
 							<div className="detail-actions">
 								<div className="detail-actions__rating">
 									<div className="detail-actions__rating-left">
-										<i class="fa-solid fa-star"></i>
+										<i className="fa-solid fa-star"></i>
 									</div>
 									<div className="detail-actions__rating-right">
 										<div className="rating-top">

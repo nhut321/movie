@@ -7,6 +7,9 @@ const getDataApi = {
 	},
 	getDataHero: function() {
 		return axios.get(BASE_URL + '/movie/now_playing?api_key=' + API_KEY)
+	},
+	getDataDetail: function(id_film, type) {
+		return axios.get(`${BASE_URL}/${type}/${id_film}?api_key=${API_KEY}`)
 	}
 }
 
