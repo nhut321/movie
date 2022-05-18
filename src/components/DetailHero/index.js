@@ -1,29 +1,56 @@
+import { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import detaiMovieImg from '../../assets/detail-movie.jpg'
 import noImage from '../../assets/noimage.jpg'
 import { imageUrl } from '../baseApi'
+import { getDataApi } from '../apiConfig'
 import './DetailHero.css'
 
-export default function DetailHero({_id, item}) {
+export default function DetailHero({_id, item, type}) {
+	const tv_release_date = item?.last_air_date
+	const backdropImg = item?.backdrop_path
+	const [crew, setCrew] = useState([])
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const result = await getDataApi.getCredits(_id, type)
+				const data = result.data.crew
+				const crew = data.filter(v => v.job == 'Director' || v.job == 'Producer' || v.job == 'Editor' || v.job == 'Creator')
+				setCrew(crew)
+			} catch(err) {
+				console.log(err)
+			}
+		}
+		fetchData()
+	},[])
 	return (
-		<div className="detail-hero" style={{backgroundImage: `url(${item.backdrop_patth == null || undefined ? noImage : imageUrl + item?.backdrop_path})`}}>
+		<div className="detail-hero" style={{backgroundImage: `url(${backdropImg ? imageUrl + backdropImg :  noImage})`}}>
 			<div className="container h-100">
 				<div className="detail-hero__mask"></div>
 				<Row className='h-100' style={{position: 'relative', zIndex: 2}}>
 					<Col xs='3' className='wrapper'>
 						<div className="detail-hero__img">
-							<img src={imageUrl + item.poster_path} alt="poster" />
+							<img src={item.poster_path ? imageUrl + item.poster_path : noImage} alt="poster" />
 						</div>
 					</Col>
 					<Col xs='9' className='wrapper'>
 						<div className="detail-right">
 							<div className="detail-hero__title">
-								<h2>{item.original_title}</h2>
-								<span className='ms-2'>( {item.release_date?.split('-')[0]} )</span>
+								<h2>{item.original_title || item.name}</h2>
+								<span className='ms-2'>( {item.release_date?.split('-')[0] || tv_release_date?.split('-')[0]} )</span>
 							</div>
 							<div className="detail-genres">
-								<span className='me-2'>Action</span>
-								<span>Drama</span>
+								{
+									item?.genres?.map((v,i,arr) => {
+										return (
+											i < arr.length -1
+											?
+											<span key={i}>{v.name + ','}</span>
+											:
+											<span key={i}>{v.name}</span>
+										)
+									})
+								}
 							</div>
 							<div className="detail-actions">
 								<div className="detail-actions__rating">
@@ -32,7 +59,7 @@ export default function DetailHero({_id, item}) {
 									</div>
 									<div className="detail-actions__rating-right">
 										<div className="rating-top">
-											<span className='fw-bold fs-4'>8.9</span>
+											<span className='fw-bold fs-4'>{item.vote_average}</span>
 											<span style={{color: '#d1cfcf'}}>/10</span>
 										</div>
 										<div className="rating-bottom">
@@ -81,26 +108,20 @@ export default function DetailHero({_id, item}) {
 								</div>
 							</div>
 							<div className="detail-overview">
-								Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+								{item.overview}
 							</div> 
 							<div className="detail-people">
 								<ul className='detail-people__list'>
-									<li className='detail-people__item col-4'>
-										<a href="#">Hugh Jackman</a>
-										<p>Main character</p>
-									</li>
-									<li className='detail-people__item col-4'>
-										<a href="#">Hugh Jackman</a>
-										<p>Main character</p>
-									</li>
-									<li className='detail-people__item col-4'>
-										<a href="#">Hugh Jackman</a>
-										<p>Main character</p>
-									</li>
-									<li className='detail-people__item col-4'>
-										<a href="#">Hugh Jackman</a>
-										<p>Main character</p>
-									</li>
+									{
+										crew.map((v,i) => {
+											return (
+												<li key={i} className='detail-people__item col-4'>
+													<a href="#">{v.name}</a>
+													<p>{v.job}</p>
+												</li>
+											)
+										})
+									}
 								</ul>
 							</div>
 						</div>

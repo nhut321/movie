@@ -11,7 +11,7 @@
 	left: 0;
 	right: 0;
 	bottom: 0;
-	background-color: #00000066;
+	background-color: #000000a1;
 }
 
 .detail-hero .wrapper {
@@ -38,10 +38,22 @@
 	align-items: center;
 }
 
+.detail-hero__title > h2 {
+	font-weight: bold;
+}
+
 .detail-hero__title > span {
 	font-family: 'Source Sans Pro', sans-serif;
 	font-size: 1.5rem;
 	font-weight: 200;	
+}
+
+.detail-genres > span {
+	margin-right: 0.5rem;
+}
+
+.detail-genres > span:last-child {
+	margin: 0;
 }
 
 .detail-actions {
