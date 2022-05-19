@@ -1,0 +1,26 @@
+.detail-cast__header {
+	display: flex;
+	align-items: center;
+	height: 120px;
+	color: white;
+}
+
+.detail-cast__header-bg {
+	width: 58px;
+	height: 87px;
+	background-size: cover;
+	margin-right: 1rem;
+}
+
+.detail-cast__header-info {
+	display: flex;
+	align-items: center;
+}
+
+.detail-cast__header-info > a {
+	color: white;
+}
+
+.detail-cast__header-info > a:hover {
+	color: var(--link-hover);
+}

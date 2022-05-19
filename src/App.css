@@ -1,6 +1,7 @@
 :root {
   --primary-color: red;
   --background-color: #141414;
+  --link-hover: #cdcdcd;
 }
 
 .App {

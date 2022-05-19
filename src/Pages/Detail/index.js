@@ -18,6 +18,7 @@ function Detail() {
 				setItem(v => {
 					return {...v, ...result.data}
 				})
+				console.log(result)
 			} catch(err) {
 				console.log(err)
 			}
@@ -42,7 +43,7 @@ function Detail() {
 	return(
 		<div className='wrapper' style={{paddingTop: '70px'}}>
 			<DetailHero crew={crew} item={item}/>
-			<CastSlider cast={cast}/>
+			<CastSlider cast={cast} type={type} _id={id_film}/>
 		</div>
 	)
 }

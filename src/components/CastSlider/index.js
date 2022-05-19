@@ -1,8 +1,8 @@
-
+import { Link } from 'react-router-dom'
 import CastSliderItem from './CastSliderItem'
 import './CastSlider.css'
 
-export default function CastSlider({cast}) {
+export default function CastSlider({cast, type, _id}) {
 	return (
 		<div className='cast-slider'>
 			<div className="container">
@@ -13,7 +13,7 @@ export default function CastSlider({cast}) {
 					{
 						cast.map((v,i) => {
 							return (
-								<CastSliderItem 
+								<CastSliderItem  
 									key={i}
 									name={v.name} 
 									character={v.character}
@@ -23,9 +23,9 @@ export default function CastSlider({cast}) {
 						})
 					}
 					<div className="content__view-more">
-						<a href="#">
+						<Link to={`/detail/${type}/${_id}/cast`}>
 							<span>View more</span>
-						</a>
+						</Link>
 					</div>
 				</div>
 			</div>
