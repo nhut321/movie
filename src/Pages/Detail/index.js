@@ -9,6 +9,8 @@ function Detail() {
 	const type = params.pathname.split('/')[2]
 	const id_film = params.pathname.split('/')[3]
 	const [item, setItem] = useState({})
+	const [crew, setCrew] = useState([])
+	const [cast, setCast] = useState([])
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
@@ -22,10 +24,25 @@ function Detail() {
 		}
 		fetchData()
 	},[])
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const result = await getDataApi.getCredits(id_film, type)
+				const dataCast = result.data.cast.slice(0,10)
+				const dataCrew = result.data.crew
+				const crew = dataCrew.filter(v => v.job === 'Director' || v.job === 'Producer' || v.job === 'Editor' || v.job === 'Creator')
+				setCast(dataCast)
+				setCrew(crew)
+			} catch(err) {
+				console.log(err)
+			}
+		}
+		fetchData()
+	},[])
 	return(
 		<div className='wrapper' style={{paddingTop: '70px'}}>
-			<DetailHero _id={id_film} item={item} type={type}/>
-			<CastSlider />
+			<DetailHero crew={crew} item={item}/>
+			<CastSlider cast={cast}/>
 		</div>
 	)
 }

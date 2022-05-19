@@ -24,7 +24,7 @@ export default function MovieItem({item, imageUrl, _id, type}) {
 						<i className="fa-solid fa-heart"></i>
 					</div>
 					<div className="movie-item__wrap-actions-icon">
-						<i className="fa-solid fa-plus"></i>
+						<i className="fa-solid fa-plus"></i> 
 					</div>
 				</div>
 			</div>

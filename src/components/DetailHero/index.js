@@ -2,27 +2,13 @@ import { useEffect, useState } from 'react'
 import { Row, Col } from 'react-bootstrap'
 import detaiMovieImg from '../../assets/detail-movie.jpg'
 import noImage from '../../assets/noimage.jpg'
+import noImagePoster from '../../assets/noimage-poster.jpg'
 import { imageUrl } from '../baseApi'
-import { getDataApi } from '../apiConfig'
 import './DetailHero.css'
 
-export default function DetailHero({_id, item, type}) {
+export default function DetailHero({_id, crew, item}) {
 	const tv_release_date = item?.last_air_date
 	const backdropImg = item?.backdrop_path
-	const [crew, setCrew] = useState([])
-	useEffect(() => {
-		const fetchData = async () => {
-			try {
-				const result = await getDataApi.getCredits(_id, type)
-				const data = result.data.crew
-				const crew = data.filter(v => v.job == 'Director' || v.job == 'Producer' || v.job == 'Editor' || v.job == 'Creator')
-				setCrew(crew)
-			} catch(err) {
-				console.log(err)
-			}
-		}
-		fetchData()
-	},[])
 	return (
 		<div className="detail-hero" style={{backgroundImage: `url(${backdropImg ? imageUrl + backdropImg :  noImage})`}}>
 			<div className="container h-100">
@@ -30,7 +16,7 @@ export default function DetailHero({_id, item, type}) {
 				<Row className='h-100' style={{position: 'relative', zIndex: 2}}>
 					<Col xs='3' className='wrapper'>
 						<div className="detail-hero__img">
-							<img src={item.poster_path ? imageUrl + item.poster_path : noImage} alt="poster" />
+							<img src={item.poster_path ? imageUrl + item.poster_path : noImagePoster} alt="poster" />
 						</div>
 					</Col>
 					<Col xs='9' className='wrapper'>
