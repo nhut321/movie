@@ -1,3 +1,7 @@
+.detail-cast {
+	min-height: 100vh;
+}
+
 .detail-cast__header {
 	display: flex;
 	align-items: center;
@@ -23,4 +27,36 @@
 
 .detail-cast__header-info > a:hover {
 	color: var(--link-hover);
+}
+
+.detail-cast__header-info > span {
+	font-size: 2rem;
+	margin-left: 0.5rem;
+	font-weight: 200;
+}
+
+.detail-cast__content {
+	text-align: left;
+	color: white;
+}
+
+.detail-cast__content .heading {
+	padding: 1rem 0;
+}
+
+.detail-cast__content-item {
+	display: flex;
+	align-items: center;
+	color: white;
+	margin-bottom: 1rem;
+}
+
+.detail-cast__content-item-img {
+	width: 66px;
+	height: 66px;
+	margin-right: 1rem;
+}
+
+.detail-cast__content-item-img img {
+	width: inherit;
 }

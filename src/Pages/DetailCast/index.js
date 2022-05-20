@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import posterImg from '../../assets/noimage-poster.jpg'
+import noAvatar from '../../assets/avatar.png'
 import { getDataApi } from '../../components/apiConfig'
 import { Row, Col } from 'react-bootstrap'
+import { imageUrl } from '../../components/baseApi'
 import './DetailCast.css'
 
 function DetailCast() {
@@ -11,9 +13,11 @@ function DetailCast() {
 	const id_film = params.pathname.split('/')[3]
 	const [cast, setCast] = useState([])
 	const [crew, setCrew] = useState([])
+	const imgAvatarUrl = 'https://www.themoviedb.org/t/p/w66_and_h66_face'
 	useEffect(() => {
 		const fetchData = async () => {
 			const result = await getDataApi.getCredits(id_film,type)
+			console.log(result.data)
 			setCast(result.data.cast)
 			setCrew(result.data.crew)
 		}
@@ -38,17 +42,50 @@ function DetailCast() {
 								<h3>Cast</h3>
 							</div>
 							<div className="detail-cast__content-list">
-								<div className="detail-cast__content-item">
-									<div className="detail-cast__content-item-img">
-										<img src={posterImg} alt="" />
-									</div>
-									<div className="detail-cast__content-item-info">
-										<Link to='/'>
-											<span>Hugh Jackman</span>
-										</Link>
-										<span>Logan</span>
-									</div>
-								</div>
+
+								{
+									cast.map((v,i) => {
+										return (
+											<div key={i} className="detail-cast__content-item">
+												<div className="detail-cast__content-item-img">
+													<img src={v.profile_path ? imgAvatarUrl + v.profile_path : noAvatar} alt="" />
+												</div>
+												<div className="detail-cast__content-item-info">
+													<Link to='/'>
+														<span>{v.name}</span>
+													</Link>
+													<p>{v.character}</p>
+												</div>
+											</div>
+										)
+									})
+								}
+
+
+							</div>
+						</Col>
+						<Col>
+							<div className="heading">
+								<h3>Crew</h3>
+							</div>
+							<div className="detail-cast__content-list">
+								{
+									crew.map((v,i) => {
+										return (
+											<div key={i} className="detail-cast__content-item">
+												<div className="detail-cast__content-item-img">
+													<img src={v.profile_path ? imgAvatarUrl + v.profile_path : noAvatar} alt="" />
+												</div>
+												<div className="detail-cast__content-item-info">
+													<Link to='/'>
+														<span>{v.name}</span>
+													</Link>
+													<p>{v.job}</p>
+												</div>
+											</div>
+										)
+									})
+								}
 							</div>
 						</Col>
 					</Row>
