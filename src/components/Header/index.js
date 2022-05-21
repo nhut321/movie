@@ -1,9 +1,15 @@
+import { useState, useRef } from 'react'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import avatar from '../../assets/avatar.png'
 import './Header.css'
 
 const Header = () => {
+	const [toggleSearch, setToggleSearch] = useState(false)
+	const toggleSearchFn = () => {
+		setToggleSearch(v => !v)
+	}
+
 	return (
 		<header className='header'>
 			<div className="wrapper container">
@@ -85,15 +91,26 @@ const Header = () => {
 				<div className="header-right">
 					<div className="header-right__list">
 						<div className="header-right__item search">
-							<div className="header-right__item-icon">
+							<div className="header-right__item-icon" onClick={toggleSearchFn}>
 								<i className="fa-solid fa-magnifying-glass"></i>
 							</div>
-							<form className='search-form d-flex'>
-								<div className="search-form__icon">
-									<i className="fa-solid fa-magnifying-glass"></i>
-								</div>
-								<input type="text"/>
-							</form>
+							{
+								toggleSearch 
+								?
+								<form className='search-form active d-flex'>
+									<div className="search-form__icon">
+										<i className="fa-solid fa-magnifying-glass"></i> 
+									</div>
+									<input type="text"/>
+								</form>
+								:
+								<form className='search-form d-flex'>
+									<div className="search-form__icon">
+										<i className="fa-solid fa-magnifying-glass"></i> 
+									</div>
+									<input type="text"/>
+								</form>
+							}
 						</div>
 						<div className="header-right__item noti">
 							<div className="header-right__item-icon">

@@ -149,7 +149,7 @@
 	transition: 0.3s;
 }
 
-.header-right__item:hover .search-form {
+.header-right__item .search-form.active {
 	top: 100%;
 	opacity: 1;
 	visibility: visible;
