@@ -8,10 +8,13 @@ export default function MovieItem({item, imageUrl, _id, type}) {
 		<div className="movie-item" style={{backgroundImage: `url(${item.backdrop_path == null || undefined ? noImage : imageUrl + item.backdrop_path})`}}>
 			<div className="movie-item__wrap">
 				<div className="movie-item__title">
-					<h5 className='mt-2 mb-2'>{item.original_title || item.name}</h5>
+					{/* <h5 className='mt-2 mb-2' style={{textAlign: 'left', fontSize: item?.original_title?.length > 40 ? '14px' : '16px'}}> */}
+					<h5 className='mt-2 mb-2'>
+						{item.original_title || item.name}
+					</h5>
 				</div>
 				<div className="movie-item__time mb-2">
-					<span>1hr:30mins</span>
+					{/* <span>1hr:30mins</span> */}
 				</div>
 				<Link to={`/detail/${type}/${_id}`}>
 					<Button size='small'/>

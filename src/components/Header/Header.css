@@ -56,6 +56,7 @@
 	background-color: black;
 	visibility: hidden;
 	transition: 0.3s;
+	border-radius: 6px;
 	opacity: 0;
 }
 
@@ -144,15 +145,21 @@
 	top: calc(100% + 50px);
 	right: 0;
 	background: black;
+	padding: 0.5rem;
+    border-radius: 6px;
 	opacity: 0;
-	visibility: hidden;
 	transition: 0.3s;
+	visibility: hidden;
 }
 
 .header-right__item .search-form.active {
 	top: 100%;
 	opacity: 1;
 	visibility: visible;
+}
+
+.search-form .search-form__icon {
+	color: var(--primary-color);
 }
 
 .search-form > input {

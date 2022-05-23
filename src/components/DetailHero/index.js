@@ -6,7 +6,8 @@ import noImagePoster from '../../assets/noimage-poster.jpg'
 import { imageUrl } from '../baseApi'
 import './DetailHero.css'
 
-export default function DetailHero({_id, crew, item}) {
+export default function DetailHero({_id, crew, item, type}) {
+	console.log(item, type)
 	const tv_release_date = item?.last_air_date
 	const backdropImg = item?.backdrop_path
 	return (
@@ -37,6 +38,13 @@ export default function DetailHero({_id, crew, item}) {
 										)
 									})
 								}
+								{
+									type == 'tv'
+									?
+									<span className='runtime'>{`${Math.floor(item.episode_run_time % 60)}m`}</span>
+									:
+									<span className='runtime'>{`${Math.floor(item.runtime / 60)}h ${Math.floor(item.runtime % 60)}m`}</span>
+								}
 							</div>
 							<div className="detail-actions">
 								<div className="detail-actions__rating">
@@ -49,7 +57,7 @@ export default function DetailHero({_id, crew, item}) {
 											<span style={{color: '#d1cfcf'}}>/10</span>
 										</div>
 										<div className="rating-bottom">
-											<span>100k</span>
+											<span>{item.vote_count}</span>
 										</div>
 									</div>
 								</div>

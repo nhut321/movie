@@ -1,13 +1,23 @@
 import { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import avatar from '../../assets/avatar.png'
 import './Header.css'
 
 const Header = () => {
+	const navigate = useNavigate()
 	const [toggleSearch, setToggleSearch] = useState(false)
+	const [searchInput, setSearchInput] = useState('')
 	const toggleSearchFn = () => {
-		setToggleSearch(v => !v)
+		setToggleSearch(v => !v) 
+	}
+
+	const redirectSearch = e => {
+		e.preventDefault()
+		setSearchInput('')
+		setToggleSearch(false)
+		navigate('/search')
 	}
 
 	return (
@@ -97,11 +107,11 @@ const Header = () => {
 							{
 								toggleSearch 
 								?
-								<form className='search-form active d-flex'>
+								<form className='search-form active d-flex' onSubmit={redirectSearch}>
 									<div className="search-form__icon">
 										<i className="fa-solid fa-magnifying-glass"></i> 
 									</div>
-									<input type="text"/>
+									<input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
 								</form>
 								:
 								<form className='search-form d-flex'>
