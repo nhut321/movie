@@ -3,9 +3,13 @@ import { useNavigate } from 'react-router-dom'
 import { Link } from 'react-router-dom'
 import logo from '../../assets/logo.png'
 import avatar from '../../assets/avatar.png'
+import { getDataApi } from '../apiConfig'
+import { useDispatch } from 'react-redux'
+import { addSearch } from './headerSlice'
 import './Header.css'
 
 const Header = () => {
+	const dispatch = useDispatch()
 	const navigate = useNavigate()
 	const [toggleSearch, setToggleSearch] = useState(false)
 	const [searchInput, setSearchInput] = useState('')
@@ -13,10 +17,12 @@ const Header = () => {
 		setToggleSearch(v => !v) 
 	}
 
-	const redirectSearch = e => {
+	const redirectSearch = async e => {
 		e.preventDefault()
 		setSearchInput('')
 		setToggleSearch(false)
+		const result = await getDataApi.searchMulti(searchInput, 1, false)
+		dispatch(addSearch(result.data.results))
 		navigate('/search')
 	}
 
@@ -104,23 +110,12 @@ const Header = () => {
 							<div className="header-right__item-icon" onClick={toggleSearchFn}>
 								<i className="fa-solid fa-magnifying-glass"></i>
 							</div>
-							{
-								toggleSearch 
-								?
-								<form className='search-form active d-flex' onSubmit={redirectSearch}>
+								<form className={toggleSearch ? 'search-form active d-flex': 'search-form d-flex'} onSubmit={redirectSearch}>
 									<div className="search-form__icon">
 										<i className="fa-solid fa-magnifying-glass"></i> 
 									</div>
-									<input type="text" value={searchInput} onChange={e => setSearchInput(e.target.value)}/>
+									<input type="text" onChange={e => setSearchInput(e.target.value)}/>
 								</form>
-								:
-								<form className='search-form d-flex'>
-									<div className="search-form__icon">
-										<i className="fa-solid fa-magnifying-glass"></i> 
-									</div>
-									<input type="text"/>
-								</form>
-							}
 						</div>
 						<div className="header-right__item noti">
 							<div className="header-right__item-icon">

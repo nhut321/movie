@@ -14,6 +14,9 @@ const getDataApi = {
 	},
 	getCredits: function(id_film, type) {
 		return axios.get(`${BASE_URL}/${type}/${id_film}/credits?api_key=${API_KEY}&language=en-US`)
+	},
+	searchMulti: function(query,page,adult) {
+		return axios.get(`${BASE_URL}/search/multi?api_key=${API_KEY}&language=en-US&query=${query}&page=${page}&include_adult=${adult}`)
 	}
 }
 

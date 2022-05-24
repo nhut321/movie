@@ -1,0 +1,19 @@
+.search-page {
+
+	color: white;
+	min-height: 100vh;
+}
+
+.search-page__content-item {
+	border-radius: 6px;
+	overflow: hidden;
+	margin-bottom: 1rem;
+}
+
+.search-page__content-item .img {
+	width: 100%;
+}
+
+.search-page__content-item .img > img {
+	width: inherit;
+}
